@@ -78,7 +78,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='/Users/jisoyun/-/.venv'
+VIRTUAL_ENV='/Users/jisoyun/15조_실전프로젝트/.venv'
 if ([ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ]) && $(command -v cygpath &> /dev/null) ; then
     VIRTUAL_ENV=$(cygpath -u "$VIRTUAL_ENV")
 fi
@@ -98,8 +98,8 @@ _OLD_VIRTUAL_PATH="$PATH"
 PATH="$VIRTUAL_ENV/bin:$PATH"
 export PATH
 
-if [ "x15-project" != x ] ; then
-    VIRTUAL_ENV_PROMPT="15-project"
+if [ "x15조_실전프로젝트" != x ] ; then
+    VIRTUAL_ENV_PROMPT="15조_실전프로젝트"
 else
     VIRTUAL_ENV_PROMPT=$(basename "$VIRTUAL_ENV")
 fi

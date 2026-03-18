@@ -58,8 +58,8 @@ deactivate -nondestructive
 $VIRTUAL_ENV = $BASE_DIR
 $env:VIRTUAL_ENV = $VIRTUAL_ENV
 
-if ("15-project" -ne "") {
-    $env:VIRTUAL_ENV_PROMPT = "15-project"
+if ("15조_실전프로젝트" -ne "") {
+    $env:VIRTUAL_ENV_PROMPT = "15조_실전프로젝트"
 }
 else {
     $env:VIRTUAL_ENV_PROMPT = $( Split-Path $env:VIRTUAL_ENV -Leaf )

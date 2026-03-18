@@ -79,7 +79,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV '/Users/jisoyun/-/.venv'
+set -gx VIRTUAL_ENV '/Users/jisoyun/15조_실전프로젝트/.venv'
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
 if test (string sub -s 1 -l 1 $FISH_VERSION) -lt 3
@@ -91,8 +91,8 @@ set -gx PATH "$VIRTUAL_ENV"'/bin' $PATH
 
 # Prompt override provided?
 # If not, just use the environment name.
-if test -n '15-project'
-    set -gx VIRTUAL_ENV_PROMPT '15-project'
+if test -n '15조_실전프로젝트'
+    set -gx VIRTUAL_ENV_PROMPT '15조_실전프로젝트'
 else
     set -gx VIRTUAL_ENV_PROMPT (basename "$VIRTUAL_ENV")
 end

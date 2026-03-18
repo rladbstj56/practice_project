@@ -26,9 +26,9 @@
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-@for %%i in ("/Users/jisoyun/-/.venv") do @set "VIRTUAL_ENV=%%~fi"
+@for %%i in ("/Users/jisoyun/15조_실전프로젝트/.venv") do @set "VIRTUAL_ENV=%%~fi"
 
-@set "VIRTUAL_ENV_PROMPT=15-project"
+@set "VIRTUAL_ENV_PROMPT=15조_실전프로젝트"
 @if NOT DEFINED VIRTUAL_ENV_PROMPT (
     @for %%d in ("%VIRTUAL_ENV%") do @set "VIRTUAL_ENV_PROMPT=%%~nxd"
 )
