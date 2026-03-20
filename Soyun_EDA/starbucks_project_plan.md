@@ -39,7 +39,7 @@
 | 전처리 | portfolio channels 리스트 파싱 → ch_web / ch_email / ch_mobile / ch_social |
 | 전처리 | profile age 이상값(118) 처리, became_member_on 날짜 변환 |
 | 전처리 | 3개 테이블 병합 → **full_df.csv 팀 공유** ⭐ |
-| 전처리 | 파생변수 생성 (age_group / income_group / member_period / day / viewed_before_complete) |
+| 전처리 | 파생변수 생성 (age_grouㅔ / income_group / member_day/ membership_days_group / day / viewed_before_complete) |
 | 태블로 | full_df.csv 태블로 연결 + 기본 시트 초안 |
 
 > 💡 전처리 담당이 full_df.csv를 공유해야 나머지 팀원 작업 시작 가능
@@ -153,6 +153,7 @@
 고객 등급화          High / Mid / Low Value 3등급 분류
     ↓
 전략 연결            A안 황금기 인사이트와 결합 → 투자 우선순위 결정
+
 ```
 
 **핵심 질문**
@@ -171,7 +172,7 @@
 | **DB3** 고객 가치 | 누구에게 투자해야 하는가 | 파레토 커브 / 등급별 특성 / 전략 카드 |
 
 **태블로 연결 파일**: `master_df_tableau.csv` (306,534행 × 26컬럼)
-- `golden_period` 컬럼: 초기 / 황금기 / 성숙기 구간 분류
+- `golden_period` 컬럼: 초기 / 황금기 / 후기 구간 분류
 - `value_tier` 컬럼: High / Mid / Low Value 고객 등급
 
 ---
