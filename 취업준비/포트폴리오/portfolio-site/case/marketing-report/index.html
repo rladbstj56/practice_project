@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketing Report Automation | 김윤서 Portfolio</title>
+  <link rel="stylesheet" href="../../assets/site.css" />
+  <style>
+    .case-hero {
+      padding: 58px 0 34px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, var(--paper) 100%);
+    }
+
+    .case-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) 360px;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .case-title {
+      max-width: 920px;
+      font-size: clamp(38px, 5vw, 58px);
+    }
+
+
+    .case-lead {
+      max-width: 900px;
+      font-size: clamp(16px, 1.55vw, 18px);
+      line-height: 1.65;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .case-meta span {
+      display: inline-flex;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: white;
+      color: #4d535d;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .case-panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .case-hero .case-panel {
+      margin-top: 33px;
+    }
+
+    .case-panel h2 {
+      margin-bottom: 14px;
+      font-size: 20px;
+    }
+
+    .fact-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fact-list li {
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: #4d535d;
+      font-size: 14px;
+    }
+
+    .fact-list li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .fact-list b {
+      color: var(--navy);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .case-section {
+      padding: 34px 0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .index-card {
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .index-card strong {
+      font-size: 34px;
+      line-height: 1;
+      color: var(--navy);
+    }
+
+    .index-card span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .line-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .line-list li {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 12px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+      color: #4d535d;
+    }
+
+    .line-list li:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .line-list b {
+      color: var(--navy);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .method-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .flow-step {
+      min-height: 142px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .flow-step b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+
+    .flow-step span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .term-note {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .findings-list {
+      display: grid;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .finding {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 22px;
+      align-items: start;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .finding:last-child {
+      border-bottom: 0;
+    }
+
+    .finding-number {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #f3f6fb;
+      color: var(--blue);
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .finding h3 {
+      margin: 0 0 7px;
+      font-size: 18px;
+      line-height: 1.38;
+    }
+
+    .finding p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .strategy-table {
+      display: grid;
+      gap: 10px;
+    }
+
+    .strategy-row {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr);
+      gap: 12px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    .strategy-row b {
+      color: var(--navy);
+    }
+
+    .strategy-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .support-note {
+      margin: 16px 0 0;
+      padding: 15px 17px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      background: white;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .support-note b {
+      color: var(--navy);
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .lesson-panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .section-pill {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #f3f6fb;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .lesson-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .lesson-item {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .lesson-item:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .lesson-index {
+      display: inline-grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--navy);
+      color: white;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .lesson-item h3 {
+      margin: 0 0 5px;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .lesson-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+
+    .case-closing {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--navy);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .case-closing h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .case-closing p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .case-actions {
+      margin-top: 16px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .case-actions-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+    }
+
+    .case-actions h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .case-actions p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .case-link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .case-link {
+      display: grid;
+      min-height: 54px;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .case-link.primary {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+
+    .artifact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .artifact-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .artifact-link.primary {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: white;
+    }
+
+    .output-preview-stack {
+      display: grid;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .output-shot {
+      margin: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .output-shot a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0e1117;
+      overflow: hidden;
+    }
+
+    .output-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .output-shot figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .output-shot b {
+      color: var(--navy);
+    }
+
+    .simulator-preview {
+      margin-top: 16px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .output-group {
+      margin-top: 18px;
+    }
+
+    .output-group-head {
+      margin-bottom: 12px;
+    }
+
+    .output-group-head h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .output-group-head p {
+      margin: 8px 0 0;
+      padding-left: 12px;
+      border-left: 3px solid var(--blue);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .simulator-preview h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .simulator-preview p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .simulator-formula {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .simulator-formula span {
+      display: grid;
+      min-height: 72px;
+      align-content: center;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      color: #4d535d;
+      font-size: 14px;
+    }
+
+    .simulator-formula b {
+      display: block;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .simulator-formula small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .quote-box {
+      padding: 24px;
+      border-radius: 8px;
+      background: var(--navy);
+      color: white;
+    }
+
+    .quote-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .case-hero-grid,
+      .story-grid,
+      .method-flow,
+      .strategy-row,
+      .lesson-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-hero .case-panel {
+        margin-top: 0;
+      }
+
+      .finding {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 18px;
+      }
+
+      .case-actions-head {
+        display: block;
+      }
+
+      .case-link-grid,
+      .simulator-formula {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .fact-list li,
+      .line-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="../../data-analyst/index.html">김윤서 Portfolio</a>
+      <nav class="navlinks" aria-label="case navigation">
+        <a href="#problem">문제 정의</a>
+        <a href="#contribution">내 기여</a>
+        <a href="#findings">핵심 결과</a>
+        <a href="#outputs">산출물</a>
+        <a href="#limits">한계</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="case-hero">
+      <div class="wrap case-hero-grid">
+        <div>
+          <p class="eyebrow">Automation · Marketing Analytics · Streamlit</p>
+          <h1 class="case-title">마케팅 성과 리포트 자동화<br>& 의사결정 시뮬레이터</h1>
+          <p class="lead case-lead">
+            매주 반복되는 마케팅 성과 리포트 작성 과정을 Python 파이프라인으로 자동화하고, 계산 결과를 경영진 요약본·마케팅팀 상세본·의사결정 시뮬레이터로 확장한 프로젝트입니다.
+          </p>
+          <p class="lead case-lead" style="margin-top:12px;">
+            범용 AI 리포트 생성기가 아니라, 정해진 마케팅 성과 스키마 안에서 입력 검증·지표 계산·이슈 탐지·채널 평가·렌더링을 반복 실행하도록 만든 도메인 특화 자동화입니다. CSV 상황에 따라 리포트의 판단 메시지와 후속 조치가 달라지도록 설계했습니다.
+          </p>
+          <div class="case-meta">
+            <span>2026.07 · 약 1주</span>
+            <span>개인 프로젝트</span>
+            <span>도메인 특화 자동화</span>
+            <span>Python·HTML·Streamlit</span>
+          </div>
+        </div>
+        <aside class="case-panel">
+          <h2>Case Snapshot</h2>
+          <ul class="fact-list">
+            <li><b>Data</b><span>8주, 원본 280행, 5개 채널 일별 마케팅 성과 CSV</span></li>
+            <li><b>Scope</b><span>CSV 로드부터 정제·계산·이슈 탐지·채널 평가·리포트 렌더링까지 자동화</span></li>
+            <li><b>Output</b><span>경영진 요약본, 마케팅팀 상세본, HTML, Streamlit 앱</span></li>
+            <li><b>Role</b><span>문제 정의, 파이프라인 구현, 검증, 문서화 단독 수행</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="wrap">
+        <div class="metrics">
+          <article class="metric"><b>반나절 절감</b><span>매주·매월 손계산·요약하던 리포트를 명령 한 번으로 자동 생성</span></article>
+          <article class="metric"><b>882만원</b><span>메타광고 과집행 기회손실 자동 탐지</span></article>
+          <article class="metric"><b>자동 분기</b><span>CSV 상황에 따라 실행 메시지와 산출물 내용을 자동 조정</span></article>
+          <article class="metric"><b>6종 검증</b><span>원본과 변형 데이터 fixture 회귀 테스트</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="case-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Problem Definition</p><h2>문제 정의</h2></div>
+          <p class="note">매주·매월 반복되는 리포트 작성 업무를 시간·정확도·의사결정 속도의 문제로 재정의했습니다.</p>
+        </div>
+        <div class="story-grid">
+          <article class="index-card">
+            <strong>01</strong>
+            <h3>반나절 이상 걸리는 반복 리포트가 실행 판단까지 이어지지 않았습니다.</h3>
+            <span>성과 CSV 정리와 지표 계산이 매 주기 반복되지만, 리포트가 채널 효율·이슈 원인·후속 조치까지 연결하지 못하면 인사이트 해석과 실행 판단이 다시 추가 분석과 회의로 넘어갑니다. ROI 순위 오판과 데이터 이슈 혼동까지 함께 검토해야 해 의사결정이 늦어지는 구조였습니다.</span>
+          </article>
+          <article class="case-panel">
+            <ul class="line-list">
+              <li><b>반복 수작업</b><span>매 주기 같은 정제·집계·요약 작업을 반복해 반나절 이상이 소요되고, 수식 오류와 문서 간 수치 불일치가 생기기 쉽습니다.</span></li>
+              <li><b>액션 부재</b><span>총매출과 ROI를 나열해도 채널별 후속 조치가 정리되지 않아, 리포트가 바로 실행으로 이어지지 않습니다.</span></li>
+              <li><b>순위 오판</b><span>이메일은 ROI 절대 1위지만 시장 벤치마크 대비로는 증액 우선순위가 아니어서, 절대순위만 보면 잘못 증액할 수 있습니다.</span></li>
+              <li><b>이슈 혼동</b><span>이메일 매출 이상치와 네이버광고 매출 결측은 예산 손실이 아니라 데이터 수집·기록 확인 대상이므로, 예산 삭감과 분리해야 합니다.</span></li>
+            </ul>
+          </article>
+        </div>
+        <small class="term-note">* ROI: 투자 대비 수익률</small>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Data & Approach</p><h2>데이터와 접근방식</h2></div>
+          <p class="note">CSV를 넣으면 지표 계산, 이슈 분류, 채널 평가, 리포트 산출까지 한 번에 이어지도록 반복 업무를 자동화했습니다.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card"><span class="tag">입력</span><h3>마케팅 성과 CSV 스키마를 표준 입력으로 정의</h3><p>필수 컬럼을 검증하고, 필수 구조가 충족되지 않은 CSV는 초기에 중단해 잘못된 리포트 생성을 막았습니다.</p></article>
+          <article class="card"><span class="tag">파이프라인</span><h3>입력 검증부터 리포트 생성까지 함수 단위로 연결</h3><p>입력 데이터 검증, 지표 계산, 이슈 분류, 채널 평가와 리포트 출력을 각각 함수로 나누고 모든 산출물이 같은 결과값을 사용하도록 연결했습니다.</p></article>
+          <article class="card"><span class="tag">판정 로직</span><h3>비정상 신호와 조치 대상을 분리</h3><p>이상 신호를 데이터 확인, 운영 점검, 예산 검토 유형으로 나눠 리포트가 어떤 후속 조치로 이어져야 하는지 분류했습니다.</p></article>
+          <article class="card"><span class="tag">AI 활용</span><h3>계산이 아니라 의사결정 흐름 구조화에 활용</h3><p>계산과 판정은 Python으로 고정하고, AI는 문제 정의와 독자별 메시지 구조를 의사결정 문서 형태로 다듬는 데 활용했습니다.</p></article>
+        </div>
+        <p class="support-note"><b>자동화 범위:</b> 같은 스키마의 새 마케팅 성과 CSV가 들어오면 동일한 절차를 반복 실행합니다. 전혀 다른 도메인의 CSV를 자동 해석하는 범용 리포트 생성기는 아니며, 이 제한을 의도적으로 명시했습니다.</p>
+
+        <div class="method-flow" style="margin-top:16px;">
+          <div class="flow-step"><b>01 입력 검증</b><span>CSV 필수 컬럼과 8주 분석 범위를 확인해 리포트 기준을 고정</span></div>
+          <div class="flow-step"><b>02 성과 지표 계산</b><span>중복·결측·이상치를 정리한 뒤 ROI, ROAS, CPA, CTR, CVR 산출</span></div>
+          <div class="flow-step"><b>03 조치 유형 분류</b><span>급등·급락·결측·벤치마크 차이를 데이터, 운영, 예산 검토 이슈로 구분</span></div>
+          <div class="flow-step"><b>04 실행 메시지 판단</b><span>지속 중인 이슈는 조치로, 해소된 이슈는 사후 점검으로 분리</span></div>
+          <div class="flow-step"><b>05 리포트 자동 생성</b><span>같은 계산 결과로 경영진 요약본, 상세본, HTML, Streamlit 화면 생성</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contribution" class="case-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">My Contribution</p><h2>담당 업무</h2></div>
+          <p class="note">반복 리포트 업무가 실행 가능한 의사결정 문서로 이어지도록 문제 정의, 파이프라인 구현, 리포트 구조화, 검증과 문서화를 단독으로 수행했습니다.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card"><span class="tag">01</span><h3>문제 재정의</h3><p>과제 요구사항을 단순 수치 요약이 아니라, 채널 상태와 후속 조치를 판단할 수 있는 의사결정 리포트로 재정의했습니다.</p></article>
+          <article class="card"><span class="tag">02</span><h3>계산 파이프라인 구현</h3><p>입력 검증, 지표 계산, 이슈 분류, 채널 평가, 리포트 출력을 함수 단위로 나누고 모든 리포트가 같은 결과값을 사용하도록 연결했습니다.</p></article>
+          <article class="card"><span class="tag">03</span><h3>의사결정 흐름 설계</h3><p>이상 신호를 데이터 확인, 운영 점검, 예산 검토로 분류하고 경영진용 요약과 마케팅팀용 실행 메시지를 분리했습니다.</p></article>
+          <article class="card"><span class="tag">04</span><h3>테스트와 문서화</h3><p>원본과 변형 데이터 6종으로 결측·중복·이상치·실행 메시지 분기 조건을 검증하고, 자동화 범위와 AI 활용 방식을 문서화했습니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="findings" class="case-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Key Findings</p><h2>핵심 결과</h2></div>
+          <p class="note">반복 리포트 자동화가 단순 수치 요약을 넘어, 채널 상태와 이슈 대응 우선순위를 판단할 수 있는 결과로 이어지게 했습니다.</p>
+        </div>
+        <div class="findings-list">
+          <article class="finding">
+            <div class="finding-number">Pipeline</div>
+            <div>
+              <h3>보고서 1회 작성이 아니라 반복 실행 가능한 리포트 자동화 흐름을 만들었습니다.</h3>
+              <p>같은 스키마의 CSV가 들어오면 입력 검증부터 지표 계산, 이슈 분류, 채널 평가, 리포트 생성까지 동일한 절차로 실행되게 했습니다.</p>
+            </div>
+          </article>
+          <article class="finding">
+            <div class="finding-number">882만원</div>
+            <div>
+              <h3>메타광고에서 882만원 규모의 과거 예산 손실 신호를 탐지했습니다.</h3>
+              <p>메타광고 과집행으로 발생한 기회손실 8,822,424원을 탐지하되, 최근 주차에서 해소된 경우 즉시 실행 조치가 아니라 사후 점검 대상으로 낮췄습니다.</p>
+            </div>
+          </article>
+          <article class="finding">
+            <div class="finding-number">Quality</div>
+            <div>
+              <h3>데이터 오류와 운영 이슈를 실행 판단과 분리했습니다.</h3>
+              <p>이메일 매출 이상치와 네이버광고 매출 결측은 예산 손실이 아니라 원본 확인 대상으로 분류해 잘못된 예산 삭감을 막았습니다.</p>
+            </div>
+          </article>
+          <article class="finding">
+            <div class="finding-number">Demo</div>
+            <div>
+              <h3>검증용 CSV로 실행 메시지 분기가 달라지는지 확인했습니다.</h3>
+              <p>최근 과집행이 지속되는 조건에서는 재배분안이 생성되어, 같은 파이프라인이 데이터 상황에 따라 다른 실행 메시지를 낼 수 있음을 검증했습니다.</p>
+            </div>
+          </article>
+          <article class="finding">
+            <div class="finding-number">2 Tracks</div>
+            <div>
+              <h3>같은 분석 결과를 경영진용 요약과 마케팅팀용 실행안으로 나누었습니다.</h3>
+              <p>경영진에는 전체 성과와 핵심 판단을, 마케팅팀에는 채널 진단과 조치 우선순위를 제공해 독자별로 다른 리포트 흐름을 구성했습니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Action Strategy</p><h2>실행 전략</h2></div>
+          <p class="note">탐지 결과를 운영 점검, 데이터 확인, 예산 검토, 실험 검증으로 나누어 바로 실행 가능한 판단 기준으로 정리했습니다.</p>
+        </div>
+        <div class="strategy-table">
+          <div class="strategy-row"><b>예산 검토</b><span>메타광고 과집행은 최근 해소되어 사후 점검 대상으로 분류</span><span>지속 중인 과집행이 다시 탐지될 때만 예산 이동 후보로 분류합니다.</span></div>
+          <div class="strategy-row"><b>데이터 품질 분리</b><span>이메일 이상치와 네이버 결측은 데이터 확인 대상으로 분리</span><span>성과 하락으로 단정하지 않고 수집·기록 오류 여부를 먼저 확인합니다.</span></div>
+          <div class="strategy-row"><b>시뮬레이터</b><span>한계효율 η를 조정 가능한 가정값으로 제공</span><span>같은 효율이 유지된다는 단순 계산과, 효율 저하를 반영한 보수적 결과를 비교합니다.</span></div>
+        </div>
+        <small class="term-note">* 한계효율 η: 예산을 더 옮길수록 기존 효율이 그대로 유지되지 않을 수 있다는 점을 반영한 비율</small>
+      </div>
+    </section>
+
+    <section id="outputs" class="case-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Result Preview</p><h2>산출물 미리보기</h2></div>
+          <p class="note">같은 파이프라인이 실제 제공 데이터와 검증용 CSV에서 서로 다른 리포트 메시지를 생성하는 과정을 두 산출물로 나누어 보여줍니다.</p>
+        </div>
+
+        <div class="output-group">
+          <div class="output-group-head">
+            <h3>제공 데이터: 실제 리포트 산출물</h3>
+            <p>원본 CSV에서는 과거 메타광고 과집행을 탐지했지만, 최근 주차에서 해소되어 현 배분 유지와 사후 점검으로 판단했습니다.</p>
+          </div>
+          <div class="grid-2">
+            <article class="card">
+              <span class="tag">제공 데이터 · 경영진</span>
+              <h3>경영진 요약 리포트</h3>
+              <p>의사결정권자가 전체 성과와 리스크 상태를 빠르게 확인하고, 현 배분 유지와 점검 필요성을 판단할 수 있도록 구성했습니다.</p>
+              <div class="artifact-actions">
+                <a class="artifact-link primary" href="artifacts/exec_report.html" target="_blank" rel="noreferrer">리포트 보기</a>
+              </div>
+            </article>
+            <article class="card">
+              <span class="tag">제공 데이터 · 마케팅팀</span>
+              <h3>마케팅팀 상세 리포트</h3>
+              <p>채널별 지표와 이슈 근거를 바탕으로 데이터 확인, 예산 한도 점검, 채널 운영 개선 과제를 실행 문서 형태로 정리했습니다.</p>
+              <div class="artifact-actions">
+                <a class="artifact-link primary" href="artifacts/insight_report.html" target="_blank" rel="noreferrer">리포트 보기</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="output-group">
+          <div class="output-group-head">
+            <h3>검증 CSV: 실행 메시지 분기 검증</h3>
+            <p>최근 과집행이 지속되는 검증용 CSV를 넣어, 같은 파이프라인에서 실행 메시지가 달라지는지 확인했습니다. 시뮬레이터는 이처럼 재배분안이 존재할 때만 활성화됩니다.</p>
+          </div>
+          <div class="grid-2">
+            <article class="card">
+              <span class="tag">검증 CSV · 리포트</span>
+              <h3>활성 재배분 데모 리포트</h3>
+              <p>최근 과집행이 지속되는 조건에서 메타광고 회수 가능액 653만원을 네이버광고로 옮기는 1순위 재배분안과 순증 매출 상한 2,938만원을 자동 산출했습니다.</p>
+              <div class="artifact-actions">
+                <a class="artifact-link primary" href="artifacts/demo_active_reallocation/exec_report.html" target="_blank" rel="noreferrer">경영진 요약 보기</a>
+                <a class="artifact-link" href="artifacts/demo_active_reallocation/insight_report.html" target="_blank" rel="noreferrer">마케팅팀 상세 보기</a>
+              </div>
+            </article>
+            <article class="card">
+              <span class="tag">검증 CSV · Streamlit</span>
+              <h3>재배분 시뮬레이터</h3>
+              <p>재배분안이 생성된 경우에만 활성화되며, 옮길 금액과 한계효율 η를 조정해 순증 매출이 유지되는 범위를 확인할 수 있습니다.</p>
+              <div class="artifact-actions">
+                <a class="artifact-link" href="artifacts/streamlit_app.py" target="_blank" rel="noreferrer">앱 코드 보기</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="simulator-preview">
+          <h3>재배분 시뮬레이션 조건</h3>
+          <p>시뮬레이터는 회수처·투자처·이동 가능액이 있을 때만 계산됩니다. 제공 데이터처럼 이동 가능한 예산이 없는 경우에는 표시하지 않고, 검증용 CSV처럼 재배분안이 생성된 경우에만 옮길 금액과 한계효율을 조정해 예상 순증 매출을 확인합니다.</p>
+          <div class="simulator-formula">
+            <span><b>입력 1</b>회수 가능한 예산 중 옮길 금액</span>
+            <span><b>입력 2</b>한계효율 η: 30–100%</span>
+            <span><b>출력</b>예상 순증 매출<br><small>이동금액 × (투자처 ROAS × η − 회수처 ROAS)</small></span>
+          </div>
+        </div>
+
+        <figure class="output-shot">
+          <a href="artifacts/simulator-preview.png" target="_blank" rel="noreferrer">
+            <img src="artifacts/simulator-preview.png" alt="검증용 CSV 재배분 시뮬레이터 화면" loading="lazy">
+          </a>
+          <figcaption>
+            <b>Streamlit 시뮬레이터 화면.</b>
+            검증용 CSV에서 재배분안이 생성된 경우, 회수 가능액 653만원과 한계효율 70%를 가정해 예상 순증 매출 1,647만원을 계산한 화면입니다.
+          </figcaption>
+        </figure>
+
+        <p class="support-note"><b>정본 유지:</b> Markdown, HTML, Streamlit 산출물은 서로 다른 계산을 하지 않습니다. 공통 파이프라인의 결과값을 사용하고, 독자와 사용 목적에 맞게 표현 방식만 다르게 구성했습니다.</p>
+      </div>
+    </section>
+
+
+    <section id="limits" class="case-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Learnings & Limits</p><h2>배운 점과 한계</h2></div>
+          <p class="note">자동화 프로젝트로서 얻은 학습과, 실제 운영 자동화로 확장하기 전 보완해야 할 지점을 분리했습니다.</p>
+        </div>
+        <div class="lesson-grid">
+          <article class="lesson-panel">
+            <span class="section-pill">배운 점</span>
+            <div class="lesson-stack">
+              <div class="lesson-item">
+                <span class="lesson-index">01</span>
+                <div>
+                  <h3>반복 리포트는 프로젝트 전반의 판단 기준까지 자동화해야 했습니다.</h3>
+                  <p>결측 처리, 이상치 탐지, 이슈 분류, 후속 조치 기준을 설계하고 코드로 고정했습니다.</p>
+                </div>
+              </div>
+              <div class="lesson-item">
+                <span class="lesson-index">02</span>
+                <div>
+                  <h3>같은 숫자를 독자별 리포트로 다르게 보여줘야 했습니다.</h3>
+                  <p>경영진 요약, 마케팅팀 상세 리포트, Streamlit이 같은 계산값을 쓰게 해 수치 불일치를 막았습니다.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="lesson-panel">
+            <span class="section-pill">한계 & 개선 방향</span>
+            <div class="lesson-stack">
+              <div class="lesson-item">
+                <span class="lesson-index">01</span>
+                <div>
+                  <h3>입력 CSV 구조가 바뀌면 추가 설정이 필요합니다.</h3>
+                  <p>컬럼명, 채널 구성, 지표 정의가 달라지면 스키마 매핑과 벤치마크 기준을 다시 잡아야 합니다.</p>
+                </div>
+              </div>
+              <div class="lesson-item">
+                <span class="lesson-index">02</span>
+                <div>
+                  <h3>시뮬레이션 효과는 실제 집행 전까지 추정치입니다.</h3>
+                  <p>예상 순증 매출은 상한값이므로, 실제 운영 전에는 소액 테스트와 holdout 검증이 필요합니다.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="wrap">
+        <div class="case-closing">
+          <p class="eyebrow">Project Takeaway</p>
+          <h2>프로젝트 핵심</h2>
+          <p>반복되는 마케팅 성과 리포트 업무를 정제·계산·이슈 탐지·채널 평가·실행 판단·렌더링까지 이어지는 파이프라인으로 구조화한 프로젝트입니다. 같은 입력 구조의 CSV에서 리포트를 반복 생성하고, 데이터 상황에 따라 실행 메시지가 달라지도록 설계했습니다. AI는 계산이 아니라 문제 정의와 의사결정 문서 구조화에 활용했습니다.</p>
+        </div>
+
+        <div class="case-actions">
+          <div class="case-actions-head">
+            <div>
+              <p class="eyebrow">Next Case</p>
+              <h2>다른 케이스 보기</h2>
+              <p>포트폴리오 요약으로 돌아가거나, 다른 프로젝트의 분석 과정을 이어서 확인할 수 있습니다.</p>
+            </div>
+          </div>
+          <div class="case-link-grid">
+            <a class="case-link primary" href="../../data-analyst/index.html">포트폴리오로 돌아가기</a>
+            <a class="case-link" href="../starbucks/index.html">스타벅스 CRM 전략 제안</a>
+            <a class="case-link" href="../olist/index.html">Olist 배송 만족도 분석</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 김윤서 Portfolio · Marketing Report Automation</div>
+  </footer>
+</body>
+</html>
